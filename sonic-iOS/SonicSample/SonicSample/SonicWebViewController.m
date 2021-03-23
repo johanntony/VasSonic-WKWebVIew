@@ -41,12 +41,12 @@
         if (isSonic) {
             if (state) {
                 SonicSessionConfiguration *configuration = [SonicSessionConfiguration new];
-                NSString *linkValue = @"http://assets.kgc.cn/ff7f069b/css/common-min.www.kgc.css?v=e4ecfe82;http://assets.kgc.cn/ff7f069b/css/themes.www.kgc.css?v=612eb426;http://assets.kgc.cn/ff7f069b/css/style.www.kgc.css?v=05d94f84";
+                NSString *linkValue = @"http://imgcache.gtimg.cn/club/platform/lib/zepto/zepto-1.1.3.js?rand=0.42398321648052617;http://imgcache.gtimg.cn/club/platform/lib/sonic/sonic-3.js?rand=0.42398321648052617;http://open.mobile.qq.com/sdk/qqapi.js?_bid=152;http://imgcache.gtimg.cn/club/platform/lib/seajs/sea-with-plugin-2.2.1.js?_bid=250&max_age=2592000;";
                 configuration.customResponseHeaders = @{
                                                         SonicHeaderKeyCacheOffline:SonicHeaderValueCacheOfflineStore,
                                                         SonicHeaderKeyLink:linkValue
                                                         };
-                configuration.enableLocalServer = YES;
+                configuration.enableLocalServer = NO;
                 configuration.supportCacheControl = YES;
                 [[SonicEngine sharedEngine] createSessionWithUrl:self.url withWebDelegate:self withConfiguration:configuration];
             }else{
@@ -148,6 +148,10 @@
 }
 
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation{
+    long long endTime = (long long)([[NSDate date] timeIntervalSince1970] * 1000);
+    long long pageTime = endTime - self.clickTime;
+    NSString *string = [NSString stringWithFormat:@"window.document.getElementById('pageTime3').innerHTML = %lld+'ms'",pageTime];
+    [self.webView evaluateJavaScript:string completionHandler:nil];
 
 }
 

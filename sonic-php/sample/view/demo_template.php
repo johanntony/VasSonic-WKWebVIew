@@ -23,8 +23,27 @@
                 WVJBIframe.src = 'https://__bridge_loaded__';
                 document.documentElement.appendChild(WVJBIframe);
                 setTimeout(function() { document.documentElement.removeChild(WVJBIframe) }, 0)
-            }
-
+        }
+        document.addEventListener('DOMContentLoaded',function(){
+             setupWebViewJavascriptBridge(function(bridge) {
+                                		bridge.callHandler('getPerformance', function(response) {
+                                		let currentTime = new Date;
+                                		var performanceJson = JSON.parse(response)
+                                        var pageTime = currentTime - performanceJson.clickTime;
+                                        window.document.getElementById("pageTime1").innerHTML = pageTime+'ms';
+                         })
+                         })
+        });
+        window.onload=function(){
+             setupWebViewJavascriptBridge(function(bridge) {
+                                		bridge.callHandler('getPerformance', function(response) {
+                                		let currentTime = new Date;
+                                		var performanceJson = JSON.parse(response)
+                                        var pageTime = currentTime - performanceJson.clickTime;
+                                        $("#pageTime2").text(pageTime+'ms');
+                         })
+                         })
+        }
     </script>
     <title>SONIC</title>
     <style>
@@ -76,6 +95,9 @@
     </span>
     <span id="des0" class="sonic_des">
         <h2>非Sonic模式 点击到页面打开耗时:<span id="pageTime0"></span></h2>
+        <h2>ContentOnload:<span id="pageTime1"></span></h2>
+        <h2>Onload:<span id="pageTime2"></span></h2>
+        <h2>app回调方法:<span id="pageTime3"></span></h2>
         <p>普通直出的方式</p>
     </span>
     <span id="des1" class="sonic_des">

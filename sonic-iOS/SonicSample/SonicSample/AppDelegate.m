@@ -45,6 +45,9 @@ NSString *const HttpsProtocolKey = @"https";
     //start web thread
     UIWebView *webPool = [[UIWebView alloc]initWithFrame:CGRectZero];
     [webPool loadHTMLString:@"" baseURL:nil];
+    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://10.130.161.46"]];
+    NSURLConnection *connect = [[NSURLConnection alloc] initWithRequest:request delegate:nil];
+    [connect start];
     
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
     self.window.rootViewController = rootNav;

@@ -35,6 +35,8 @@
 	</array>
 	<key>UIRequiresFullScreen</key>
 	<false/>
+	<key>Local Network Usage Description</key>
+	<string>使用本地网络</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

@@ -141,6 +141,18 @@ static CGFloat SizeFitHeightPlus(CGFloat value)
     [self.navigationController pushViewController:webVC animated:YES];
 }
 
+- (void)sonicRequestAction
+{
+    SonicWebViewController *webVC = [[SonicWebViewController alloc]initWithUrl:@"http://10.130.161.46/sample/index.php" useSonicMode:YES unStrictMode:NO];
+    [self.navigationController pushViewController:webVC animated:YES];
+}
+
+- (void)unstrictModeSonicRequestAction
+{
+    SonicWebViewController *webVC = [[SonicWebViewController alloc]initWithUrl:@"http://10.130.161.46/sample/index.php" useSonicMode:YES unStrictMode:YES];
+    [self.navigationController pushViewController:webVC animated:YES];
+}
+
 - (void)sonicResourcePreloadAction
 {
     SonicWebViewController *webVC = [[SonicWebViewController alloc]initWithUrl:@"http://www.kgc.cn/zhuanti/bigca.shtml?jump=1" useSonicMode:YES unStrictMode:YES];
@@ -151,18 +163,6 @@ static CGFloat SizeFitHeightPlus(CGFloat value)
 {
     [[SonicEngine sharedEngine] createSessionWithUrl:self.url withWebDelegate:nil];
     [self alertMessage:@"Preload Start!"];
-}
-
-- (void)sonicRequestAction
-{
-    SonicWebViewController *webVC = [[SonicWebViewController alloc]initWithUrl:@"http://10.130.161.46/sample/index.php" useSonicMode:YES unStrictMode:NO];
-    [self.navigationController pushViewController:webVC animated:YES];
-}
-
-- (void)unstrictModeSonicRequestAction
-{
-    SonicWebViewController *webVC = [[SonicWebViewController alloc]initWithUrl:@"http://www.kgc.cn/zhuanti/bigca.shtml?jump=1" useSonicMode:YES unStrictMode:YES];
-    [self.navigationController pushViewController:webVC animated:YES];
 }
 
 - (void)loadWithOfflineFileAction
