@@ -31,11 +31,11 @@
     [[SonicEngine sharedEngine] sonicUpdateDiffDataByWebDelegate:owner completion:^(NSDictionary *result) {
         __strong typeof(SonicWebViewController *) strongOwner = weakOwner;
         if (strongOwner && result) {
-            JSValue *callback = strongOwner.jscontext.globalObject;
-            NSData *json = [NSJSONSerialization dataWithJSONObject:result options:NSJSONWritingPrettyPrinted error:nil];
-            NSString *jsonStr = [[NSString alloc]initWithData:json encoding:NSUTF8StringEncoding];
+//            JSValue *callback = strongOwner.jscontext.globalObject;
+//            NSData *json = [NSJSONSerialization dataWithJSONObject:result options:NSJSONWritingPrettyPrinted error:nil];
+//            NSString *jsonStr = [[NSString alloc]initWithData:json encoding:NSUTF8StringEncoding];
             
-            [callback invokeMethod:@"getDiffDataCallback" withArguments:@[jsonStr]];
+//            [callback invokeMethod:@"getDiffDataCallback" withArguments:@[jsonStr]];
         }
     }];
 }

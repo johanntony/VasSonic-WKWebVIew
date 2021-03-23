@@ -21,6 +21,10 @@
 		546B78731F010710003F08AE /* SonicWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 546B78701F010710003F08AE /* SonicWebViewController.m */; };
 		546F47F1200C87C10086CCF1 /* SonicEventObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 546F47F0200C87C10086CCF1 /* SonicEventObserver.m */; };
 		54DEED511F0D06C2007E9A7F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54DEED501F0D06C2007E9A7F /* LaunchScreen.storyboard */; };
+		9168AE05260983FF005F4FBC /* WebViewJavascriptBridgeBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9168ADFD260983FF005F4FBC /* WebViewJavascriptBridgeBase.m */; };
+		9168AE06260983FF005F4FBC /* WKWebViewJavascriptBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 9168ADFE260983FF005F4FBC /* WKWebViewJavascriptBridge.m */; };
+		9168AE07260983FF005F4FBC /* WebViewJavascriptBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 9168ADFF260983FF005F4FBC /* WebViewJavascriptBridge.m */; };
+		9168AE08260983FF005F4FBC /* WebViewJavascriptBridge_JS.m in Sources */ = {isa = PBXBuildFile; fileRef = 9168AE02260983FF005F4FBC /* WebViewJavascriptBridge_JS.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +62,14 @@
 		546F47EF200C87C10086CCF1 /* SonicEventObserver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SonicEventObserver.h; sourceTree = "<group>"; };
 		546F47F0200C87C10086CCF1 /* SonicEventObserver.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SonicEventObserver.m; sourceTree = "<group>"; };
 		54DEED501F0D06C2007E9A7F /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9168ADFD260983FF005F4FBC /* WebViewJavascriptBridgeBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewJavascriptBridgeBase.m; sourceTree = "<group>"; };
+		9168ADFE260983FF005F4FBC /* WKWebViewJavascriptBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKWebViewJavascriptBridge.m; sourceTree = "<group>"; };
+		9168ADFF260983FF005F4FBC /* WebViewJavascriptBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewJavascriptBridge.m; sourceTree = "<group>"; };
+		9168AE00260983FF005F4FBC /* WebViewJavascriptBridge_JS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewJavascriptBridge_JS.h; sourceTree = "<group>"; };
+		9168AE01260983FF005F4FBC /* WebViewJavascriptBridgeBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewJavascriptBridgeBase.h; sourceTree = "<group>"; };
+		9168AE02260983FF005F4FBC /* WebViewJavascriptBridge_JS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewJavascriptBridge_JS.m; sourceTree = "<group>"; };
+		9168AE03260983FF005F4FBC /* WebViewJavascriptBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewJavascriptBridge.h; sourceTree = "<group>"; };
+		9168AE04260983FF005F4FBC /* WKWebViewJavascriptBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKWebViewJavascriptBridge.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +163,7 @@
 		546B786A1F010702003F08AE /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				9168ADFC260983FF005F4FBC /* WebViewJavascriptBridge */,
 				543696431F166A0F00579BA5 /* offline */,
 				546B786B1F010710003F08AE /* RootViewController.h */,
 				546B786C1F010710003F08AE /* RootViewController.m */,
@@ -172,6 +185,21 @@
 				5433CC281F171DDB00F24C1B /* Sonic.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9168ADFC260983FF005F4FBC /* WebViewJavascriptBridge */ = {
+			isa = PBXGroup;
+			children = (
+				9168ADFD260983FF005F4FBC /* WebViewJavascriptBridgeBase.m */,
+				9168ADFE260983FF005F4FBC /* WKWebViewJavascriptBridge.m */,
+				9168ADFF260983FF005F4FBC /* WebViewJavascriptBridge.m */,
+				9168AE00260983FF005F4FBC /* WebViewJavascriptBridge_JS.h */,
+				9168AE01260983FF005F4FBC /* WebViewJavascriptBridgeBase.h */,
+				9168AE02260983FF005F4FBC /* WebViewJavascriptBridge_JS.m */,
+				9168AE03260983FF005F4FBC /* WebViewJavascriptBridge.h */,
+				9168AE04260983FF005F4FBC /* WKWebViewJavascriptBridge.h */,
+			);
+			path = WebViewJavascriptBridge;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -223,11 +251,12 @@
 				TargetAttributes = {
 					546B78401F0106C8003F08AE = {
 						CreatedOnToolsVersion = 8.2;
-						DevelopmentTeam = Q4ZJ4XF89A;
-						ProvisioningStyle = Manual;
+						DevelopmentTeam = RFQ3595743;
+						ProvisioningStyle = Automatic;
 					};
 					546B78591F0106C8003F08AE = {
 						CreatedOnToolsVersion = 8.2;
+						DevelopmentTeam = RFQ3595743;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 546B78401F0106C8003F08AE;
 					};
@@ -238,6 +267,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -279,13 +309,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9168AE05260983FF005F4FBC /* WebViewJavascriptBridgeBase.m in Sources */,
 				546B78491F0106C8003F08AE /* AppDelegate.m in Sources */,
 				546B78721F010710003F08AE /* SonicJSContext.m in Sources */,
 				546B78461F0106C8003F08AE /* main.m in Sources */,
 				546B78711F010710003F08AE /* RootViewController.m in Sources */,
+				9168AE06260983FF005F4FBC /* WKWebViewJavascriptBridge.m in Sources */,
 				546B78731F010710003F08AE /* SonicWebViewController.m in Sources */,
 				5436964E1F166A4200579BA5 /* SonicOfflineCacheConnection.m in Sources */,
 				546F47F1200C87C10086CCF1 /* SonicEventObserver.m in Sources */,
+				9168AE07260983FF005F4FBC /* WebViewJavascriptBridge.m in Sources */,
+				9168AE08260983FF005F4FBC /* WebViewJavascriptBridge_JS.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,18 +450,18 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Ming Huang (RMP465DM7N)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ming Huang (RMP465DM7N)";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = Q4ZJ4XF89A;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = RFQ3595743;
 				INFOPLIST_FILE = SonicSample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_CODE_SIGN_FLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tencent.SonicSample;
+				PRODUCT_BUNDLE_IDENTIFIER = com.beok.SonicSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "708a394e-c58f-44b5-af84-8daba31e4d18";
-				PROVISIONING_PROFILE_SPECIFIER = VasQQDev;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -453,10 +487,12 @@
 		546B78671F0106C8003F08AE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEVELOPMENT_TEAM = RFQ3595743;
 				INFOPLIST_FILE = SonicSampleUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tencent.SonicSampleUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_TARGET_NAME = SonicSample;
 			};
 			name = Debug;
@@ -468,6 +504,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tencent.SonicSampleUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_TARGET_NAME = SonicSample;
 			};
 			name = Release;

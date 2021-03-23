@@ -19,13 +19,14 @@
 
 #import <UIKit/UIKit.h>
 #import <JavaScriptCore/JavaScriptCore.h>
+#import <WebKit/WebKit.h>
+
 @import Sonic;
 
-@interface SonicWebViewController : UIViewController<SonicSessionDelegate,UIWebViewDelegate>
+@interface SonicWebViewController : UIViewController<SonicSessionDelegate,WKNavigationDelegate>
 @property (nonatomic,strong)NSString *url;
-@property (nonatomic,strong)UIWebView *webView;
+@property (nonatomic,strong)WKWebView *webView;
 @property (nonatomic,assign)long long clickTime;
-@property (nonatomic,weak)JSContext *jscontext;
 
 - (instancetype)initWithUrl:(NSString *)aUrl useSonicMode:(BOOL)isSonic unStrictMode:(BOOL)state;
 

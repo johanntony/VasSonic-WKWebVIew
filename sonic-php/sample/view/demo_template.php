@@ -14,6 +14,17 @@
     <script type="application/javascript">
         var _pageTime = {};
         _pageTime.startTime = new Date;
+        function setupWebViewJavascriptBridge(callback) {
+                if (window.WebViewJavascriptBridge) { return callback(WebViewJavascriptBridge); }
+                if (window.WVJBCallbacks) { return window.WVJBCallbacks.push(callback); }
+                window.WVJBCallbacks = [callback];
+                var WVJBIframe = document.createElement('iframe');
+                WVJBIframe.style.display = 'none';
+                WVJBIframe.src = 'https://__bridge_loaded__';
+                document.documentElement.appendChild(WVJBIframe);
+                setTimeout(function() { document.documentElement.removeChild(WVJBIframe) }, 0)
+            }
+
     </script>
     <title>SONIC</title>
     <style>
@@ -147,8 +158,13 @@
             } else {
                 performanceJson = {clickTime: 0, loadUrlTime: 0};
             }
-            var pageTime = _pageTime.jsendtTime - performanceJson.clickTime;
-            $("#pageTime"+sonicStatus).text(pageTime+'ms');
+             setupWebViewJavascriptBridge(function(bridge) {
+                    		bridge.callHandler('getPerformance', function(response) {
+                    		var performanceJson = JSON.parse(response)
+                            var pageTime = _pageTime.jsendtTime - performanceJson.clickTime;
+                            $("#pageTime"+sonicStatus).text(pageTime+'ms');
+             })
+             })
         }
         <?php if($sonicStatus != 0) {?>
         /**

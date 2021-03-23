@@ -137,7 +137,7 @@ static CGFloat SizeFitHeightPlus(CGFloat value)
 
 - (void)normalRequestAction
 {
-    SonicWebViewController *webVC = [[SonicWebViewController alloc]initWithUrl:self.url useSonicMode:NO unStrictMode:NO];
+    SonicWebViewController *webVC = [[SonicWebViewController alloc]initWithUrl:@"http://10.130.161.46/sample/index.php" useSonicMode:NO unStrictMode:NO];
     [self.navigationController pushViewController:webVC animated:YES];
 }
 
@@ -155,7 +155,7 @@ static CGFloat SizeFitHeightPlus(CGFloat value)
 
 - (void)sonicRequestAction
 {
-    SonicWebViewController *webVC = [[SonicWebViewController alloc]initWithUrl:self.url useSonicMode:YES unStrictMode:NO];
+    SonicWebViewController *webVC = [[SonicWebViewController alloc]initWithUrl:@"http://10.130.161.46/sample/index.php" useSonicMode:YES unStrictMode:NO];
     [self.navigationController pushViewController:webVC animated:YES];
 }
 

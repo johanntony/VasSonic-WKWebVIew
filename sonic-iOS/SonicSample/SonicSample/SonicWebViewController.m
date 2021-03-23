@@ -18,13 +18,13 @@
 //
 
 #import "SonicWebViewController.h"
-#import "SonicJSContext.h"
+#import "WebViewJavascriptBridge.h"
 
 @interface SonicWebViewController ()
 
-@property (nonatomic,strong)SonicJSContext *sonicContext;
 
 @property (nonatomic,assign)BOOL isStandSonic;
+@property (nonatomic,strong) WebViewJavascriptBridge* bridge;
 
 @end
 
@@ -60,7 +60,9 @@
 
 - (void)dealloc
 {
-    self.sonicContext = nil;
+    [self.bridge removeHandler:@"getPerformance"];
+    [self.bridge setWebViewDelegate:nil];
+    self.bridge = nil;
     [[SonicEngine sharedEngine] removeSessionWithWebDelegate:self];
 }
 
@@ -68,10 +70,26 @@
 {
     [super loadView];
     
-    self.webView = [[UIWebView alloc]initWithFrame:self.view.bounds];
-    self.webView.delegate = self;
+    WKUserContentController *wkCont = [[WKUserContentController alloc] init];
+    WKWebViewConfiguration *config = [[WKWebViewConfiguration alloc] init];
+    config.userContentController = wkCont;
+    
+    self.webView = [[WKWebView alloc]initWithFrame:self.view.bounds configuration:config];
+    self.webView.navigationDelegate = self;
     self.webView.scrollView.decelerationRate = UIScrollViewDecelerationRateNormal;
     self.view = self.webView;
+    
+    __weak typeof(self) weakSelf = self;
+
+    [WebViewJavascriptBridge enableLogging];
+    _bridge = [WebViewJavascriptBridge bridgeForWebView:weakSelf.webView];
+    [_bridge setWebViewDelegate:self];
+    
+    [_bridge registerHandler:@"getPerformance" handler:^(id data, WVJBResponseCallback responseCallback) {
+        NSLog(@"testObjcCallback called: %@", data);
+        NSString *response = [weakSelf getPerformance];
+        responseCallback(response);
+    }];
     
     if (self.isStandSonic) {
         UIBarButtonItem *reloadItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(updateAction)];
@@ -86,10 +104,21 @@
     }else{
         [self.webView loadRequest:request];
     }
-    
-    self.sonicContext = [[SonicJSContext alloc]init];
-    self.sonicContext.owner = self;
+
 }
+
+
+- (NSString *)getPerformance
+{
+    NSDictionary *result = @{
+                             @"clickTime":@(self.clickTime),
+                             };
+    NSData *json = [NSJSONSerialization dataWithJSONObject:result options:NSJSONWritingPrettyPrinted error:nil];
+    NSString *jsonStr = [[NSString alloc]initWithData:json encoding:NSUTF8StringEncoding];
+    
+    return jsonStr;
+}
+
 
 - (void)updateAction
 {
@@ -100,18 +129,26 @@
 
 #pragma mark - UIWebViewDelegate
 
-- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
-{
-    self.jscontext = [self.webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
-    self.jscontext[@"sonic"] = self.sonicContext;
-    
-    return YES;
+//- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+//{
+//    self.jscontext = [self.webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
+//    self.jscontext[@"sonic"] = self.sonicContext;
+//
+//    return YES;
+//}
+//
+//- (void)webViewDidFinishLoad:(UIWebView *)webView
+//{
+//    self.jscontext = [self.webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
+//    self.jscontext[@"sonic"] = self.sonicContext;
+//}
+
+- (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation{
+
 }
 
-- (void)webViewDidFinishLoad:(UIWebView *)webView
-{
-    self.jscontext = [self.webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
-    self.jscontext[@"sonic"] = self.sonicContext;
+- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation{
+
 }
 
 #pragma mark - Sonic Session Delegate
