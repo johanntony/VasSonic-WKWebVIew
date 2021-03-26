@@ -19,6 +19,7 @@
 
 #import "AppDelegate.h"
 #import "RootViewController.h"
+#import "WebViewPoolManager.h"
 
 NSString *const HttpProtocolKey = @"http";
 NSString *const HttpsProtocolKey = @"https";
@@ -43,8 +44,9 @@ NSString *const HttpsProtocolKey = @"https";
     UINavigationController *rootNav = [[UINavigationController alloc]initWithRootViewController:rootVC];
     
     //start web thread
-    UIWebView *webPool = [[UIWebView alloc]initWithFrame:CGRectZero];
+    UIWebView *webPool = [[UIWebView alloc] initWithFrame:CGRectZero];
     [webPool loadHTMLString:@"" baseURL:nil];
+    WebViewPoolManager *poolManager = [WebViewPoolManager sharedManager];
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://10.130.161.46"]];
     NSURLConnection *connect = [[NSURLConnection alloc] initWithRequest:request delegate:nil];
     [connect start];

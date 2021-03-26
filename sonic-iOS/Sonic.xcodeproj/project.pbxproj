@@ -130,8 +130,8 @@
 			children = (
 				E43E03441F618182000F30ED /* SonicSessionConfiguration.h */,
 				E43E03451F618182000F30ED /* SonicSessionConfiguration.m */,
-				546B781D1F0105F6003F08AE /* SonicSession.m */,
 				546B78261F0105F6003F08AE /* SonicSession.h */,
+				546B781D1F0105F6003F08AE /* SonicSession.m */,
 			);
 			path = Session;
 			sourceTree = "<group>";
@@ -141,10 +141,10 @@
 			children = (
 				54C2E2D01F6B79CF003EC647 /* SonicDatabase.h */,
 				54C2E2D11F6B79CF003EC647 /* SonicDatabase.m */,
-				546B78181F0105F6003F08AE /* SonicCache.m */,
 				546B78211F0105F6003F08AE /* SonicCache.h */,
-				546B78191F0105F6003F08AE /* SonicCacheItem.m */,
+				546B78181F0105F6003F08AE /* SonicCache.m */,
 				546B78221F0105F6003F08AE /* SonicCacheItem.h */,
+				546B78191F0105F6003F08AE /* SonicCacheItem.m */,
 			);
 			path = Cache;
 			sourceTree = "<group>";
@@ -152,8 +152,8 @@
 		542F99F01FE768C200598258 /* Engine */ = {
 			isa = PBXGroup;
 			children = (
-				546B781A1F0105F6003F08AE /* SonicEngine.m */,
 				546B78231F0105F6003F08AE /* SonicEngine.h */,
+				546B781A1F0105F6003F08AE /* SonicEngine.m */,
 				545D61C41F623BED00DA8F3A /* SonicConfiguration.h */,
 				545D61C51F623BED00DA8F3A /* SonicConfiguration.m */,
 			);
@@ -343,6 +343,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 546B78031F0105AA003F08AE;

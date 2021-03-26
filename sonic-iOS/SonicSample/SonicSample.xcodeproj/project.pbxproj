@@ -25,6 +25,7 @@
 		9168AE06260983FF005F4FBC /* WKWebViewJavascriptBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 9168ADFE260983FF005F4FBC /* WKWebViewJavascriptBridge.m */; };
 		9168AE07260983FF005F4FBC /* WebViewJavascriptBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 9168ADFF260983FF005F4FBC /* WebViewJavascriptBridge.m */; };
 		9168AE08260983FF005F4FBC /* WebViewJavascriptBridge_JS.m in Sources */ = {isa = PBXBuildFile; fileRef = 9168AE02260983FF005F4FBC /* WebViewJavascriptBridge_JS.m */; };
+		91EFEA35260C607A00F915BA /* WebViewPoolManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 91EFEA34260C607A00F915BA /* WebViewPoolManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,8 @@
 		9168AE02260983FF005F4FBC /* WebViewJavascriptBridge_JS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewJavascriptBridge_JS.m; sourceTree = "<group>"; };
 		9168AE03260983FF005F4FBC /* WebViewJavascriptBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewJavascriptBridge.h; sourceTree = "<group>"; };
 		9168AE04260983FF005F4FBC /* WKWebViewJavascriptBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKWebViewJavascriptBridge.h; sourceTree = "<group>"; };
+		91EFEA33260C607A00F915BA /* WebViewPoolManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebViewPoolManager.h; sourceTree = "<group>"; };
+		91EFEA34260C607A00F915BA /* WebViewPoolManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebViewPoolManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +178,8 @@
 				5436964D1F166A4200579BA5 /* SonicOfflineCacheConnection.m */,
 				546F47EF200C87C10086CCF1 /* SonicEventObserver.h */,
 				546F47F0200C87C10086CCF1 /* SonicEventObserver.m */,
+				91EFEA33260C607A00F915BA /* WebViewPoolManager.h */,
+				91EFEA34260C607A00F915BA /* WebViewPoolManager.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -312,6 +317,7 @@
 				9168AE05260983FF005F4FBC /* WebViewJavascriptBridgeBase.m in Sources */,
 				546B78491F0106C8003F08AE /* AppDelegate.m in Sources */,
 				546B78721F010710003F08AE /* SonicJSContext.m in Sources */,
+				91EFEA35260C607A00F915BA /* WebViewPoolManager.m in Sources */,
 				546B78461F0106C8003F08AE /* main.m in Sources */,
 				546B78711F010710003F08AE /* RootViewController.m in Sources */,
 				9168AE06260983FF005F4FBC /* WKWebViewJavascriptBridge.m in Sources */,

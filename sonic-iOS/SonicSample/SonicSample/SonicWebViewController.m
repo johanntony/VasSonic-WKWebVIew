@@ -19,6 +19,7 @@
 
 #import "SonicWebViewController.h"
 #import "WebViewJavascriptBridge.h"
+#import "WebViewPoolManager.h"
 
 @interface SonicWebViewController ()
 
@@ -41,7 +42,7 @@
         if (isSonic) {
             if (state) {
                 SonicSessionConfiguration *configuration = [SonicSessionConfiguration new];
-                NSString *linkValue = @"http://imgcache.gtimg.cn/club/platform/lib/zepto/zepto-1.1.3.js?rand=0.42398321648052617;http://imgcache.gtimg.cn/club/platform/lib/sonic/sonic-3.js?rand=0.42398321648052617;http://open.mobile.qq.com/sdk/qqapi.js?_bid=152;http://imgcache.gtimg.cn/club/platform/lib/seajs/sea-with-plugin-2.2.1.js?_bid=250&max_age=2592000;";
+                NSString *linkValue = @"http://imgcache.gtimg.cn/club/platform/lib/zepto/zepto-1.1.3.js?rand=0.42398321648052617;http://imgcache.gtimg.cn/club/platform/lib/sonic/sonic-3.js?rand=0.42398321648052617;http://open.mobile.qq.com/sdk/qqapi.js?_bid=152;http://imgcache.gtimg.cn/club/platform/lib/seajs/sea-with-plugin-2.2.1.js?_bid=250&max_age=2592000";
                 configuration.customResponseHeaders = @{
                                                         SonicHeaderKeyCacheOffline:SonicHeaderValueCacheOfflineStore,
                                                         SonicHeaderKeyLink:linkValue
@@ -51,7 +52,9 @@
                 [[SonicEngine sharedEngine] createSessionWithUrl:self.url withWebDelegate:self withConfiguration:configuration];
             }else{
                 self.isStandSonic = YES;
-                [[SonicEngine sharedEngine] createSessionWithUrl:self.url withWebDelegate:self];
+                SonicSessionConfiguration *configuration = [SonicSessionConfiguration new];
+                configuration.supportCacheControl = YES;
+                [[SonicEngine sharedEngine] createSessionWithUrl:self.url withWebDelegate:self withConfiguration:configuration];
             }
         }
     }
@@ -60,6 +63,8 @@
 
 - (void)dealloc
 {
+    [self.webView removeFromSuperview];
+    [[WebViewPoolManager sharedManager] destoryWebView:self.webView];
     [self.bridge removeHandler:@"getPerformance"];
     [self.bridge setWebViewDelegate:nil];
     self.bridge = nil;
@@ -74,10 +79,13 @@
     WKWebViewConfiguration *config = [[WKWebViewConfiguration alloc] init];
     config.userContentController = wkCont;
     
-    self.webView = [[WKWebView alloc]initWithFrame:self.view.bounds configuration:config];
-    self.webView.navigationDelegate = self;
-    self.webView.scrollView.decelerationRate = UIScrollViewDecelerationRateNormal;
-    self.view = self.webView;
+    WKWebView *webView = [[WebViewPoolManager sharedManager] getWebViewInstance];
+    webView.frame = self.view.bounds;
+//    self.webView = [[WKWebView alloc]initWithFrame:self.view.bounds configuration:config];
+    webView.navigationDelegate = self;
+    webView.scrollView.decelerationRate = UIScrollViewDecelerationRateNormal;
+    self.view = webView;
+    self.webView = webView;
     
     __weak typeof(self) weakSelf = self;
 
